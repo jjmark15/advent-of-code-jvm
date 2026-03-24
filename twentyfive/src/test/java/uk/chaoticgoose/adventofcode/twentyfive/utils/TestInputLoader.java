@@ -5,13 +5,14 @@ import uk.chaoticgoose.jresult.Result;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.Objects;
+
+import static java.util.Objects.requireNonNull;
 
 public class TestInputLoader {
 
     public List<String> load(int day, InputDataModifier modifier) {
         var fileName = "/data/%s_%s.txt".formatted(day, modifier.value());
-        Path filePath = Path.of(Objects.requireNonNull(getClass().getResource(fileName)).getPath());
+        Path filePath = Path.of(requireNonNull(getClass().getResource(fileName)).getPath());
         return Result.catching(() -> Files.readAllLines(filePath)).mapFailure(RuntimeException::new).valueOrThrow();
     }
 
