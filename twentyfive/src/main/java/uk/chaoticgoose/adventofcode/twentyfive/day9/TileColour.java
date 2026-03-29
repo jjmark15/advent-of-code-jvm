@@ -1,6 +1,6 @@
 package uk.chaoticgoose.adventofcode.twentyfive.day9;
 
-public enum TileColour {
+enum TileColour {
     RED,
     OTHER;
 }
